@@ -3,8 +3,8 @@
   <head>
     <title>R data structure with stringr, forcats, lubridate, and tidyr</title>
     <meta charset="utf-8" />
-    <meta name="author" content="John Franchak" />
-    <script src="libs/header-attrs-2.11.3/header-attrs.js"></script>
+    <meta name="author" content="John Franchak, with minimal updates by Tabea Springstein" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view-0.2.6/tile-view.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
@@ -18,9 +18,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # R data structure with stringr, forcats, lubridate, and tidyr
+]
+.subtitle[
 ## PSYC 259: Principles of Data Science
-### John Franchak
+]
+.author[
+### John Franchak, with minimal updates by Tabea Springstein
+]
 
 ---
 
@@ -45,7 +51,7 @@ class: center, middle, inverse, title-slide
 &lt;svg viewBox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; Follow along from the [Github repo](https://github.com/psych-259-data-science-2022/259-data-structure)
 ]
 
-.footnote[.small[.bold[Last updated: 2022-01-31]]]
+.footnote[.small[.bold[Last updated: 2025-02-09]]]
 
 ---
 # Common data types in R
@@ -67,40 +73,25 @@ class: center, middle, inverse, title-slide
 # What packages do we need?
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
 ```
-── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-```
-
-```
-✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-✓ tibble  3.1.6     ✓ dplyr   1.0.7
-✓ tidyr   1.1.4     ✓ stringr 1.4.0
-✓ readr   2.0.2     ✓ forcats 0.5.1
-```
-
-```
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
 ```
 
-```r
+``` r
 library(lubridate) #install if needed
-```
-
-```
-
-Attaching package: 'lubridate'
-```
-
-```
-The following objects are masked from 'package:base':
-
-    date, intersect, setdiff, union
 ```
 
 ---
@@ -134,7 +125,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 *v &lt;- c(1, 2, 3, 4, 5)
 ```
 ]
@@ -149,7 +140,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 *v 
 ```
@@ -168,7 +159,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 *typeof(v)
@@ -192,7 +183,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -221,7 +212,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -255,7 +246,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -294,7 +285,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -334,7 +325,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -375,7 +366,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -421,7 +412,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -468,7 +459,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -521,7 +512,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -580,7 +571,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -641,7 +632,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -707,7 +698,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -778,7 +769,7 @@ count: false
 # Vectors
 .panel1-vectors-auto[
 
-```r
+``` r
 v &lt;- c(1, 2, 3, 4, 5)
 v
 typeof(v)
@@ -885,7 +876,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 *lt &lt;- list(x = 1, y = "3", z = 1:5)
 ```
 ]
@@ -900,7 +891,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 *lt
 ```
@@ -926,7 +917,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 lt
 *lt$z # Access named list elements with $  # Access named list elements with $
@@ -957,7 +948,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 lt
 lt$z # Access named list elements with $  # Access named list elements with $
@@ -993,7 +984,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 lt
 lt$z # Access named list elements with $  # Access named list elements with $
@@ -1030,7 +1021,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 lt
 lt$z # Access named list elements with $  # Access named list elements with $
@@ -1070,7 +1061,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 lt
 lt$z # Access named list elements with $  # Access named list elements with $
@@ -1122,7 +1113,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 lt
 lt$z # Access named list elements with $  # Access named list elements with $
@@ -1176,7 +1167,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 lt
 lt$z # Access named list elements with $  # Access named list elements with $
@@ -1235,7 +1226,7 @@ count: false
 # Lists
 .panel1-lists-auto[
 
-```r
+``` r
 lt &lt;- list(x = 1, y = "3", z = 1:5)
 lt
 lt$z # Access named list elements with $  # Access named list elements with $
@@ -1290,7 +1281,7 @@ $z
 
 ```
  (Intercept)         mass 
-171.28536091   0.02807045 
+171.68547308   0.02744228 
 ```
 ]
 
@@ -1347,7 +1338,7 @@ background-size: contain
 ---
 # Jonah's first words
 
-```r
+``` r
 ds$word
 ```
 
@@ -1504,7 +1495,7 @@ ds$word
 ---
 # Length, containing strings, counting strings
 
-```r
+``` r
 ds %&gt;% mutate(word_len = str_length(word), 
               has_b = str_detect(word, "b"), 
               num_b = str_count(word, "b"))
@@ -1524,7 +1515,7 @@ ds %&gt;% mutate(word_len = str_length(word),
  8 16    shoes              5 FALSE     0
  9 16.5  monkey             6 FALSE     0
 10 17    hello              5 FALSE     0
-# … with 430 more rows
+# ℹ 430 more rows
 ```
 
 ---
@@ -1538,7 +1529,7 @@ count: false
 # Matching patterns
 .panel1-patterns-rotate[
 
-```r
+``` r
 *ds %&gt;% mutate(word_cleaned = str_remove_all(word, "[:punct:]"))
 ```
 ]
@@ -1559,7 +1550,7 @@ count: false
  8 16    shoes       shoes       
  9 16.5  monkey      monkey      
 10 17    hello       hello       
-# … with 430 more rows
+# ℹ 430 more rows
 ```
 ]
 
@@ -1569,7 +1560,7 @@ count: false
 # Matching patterns
 .panel1-patterns-rotate[
 
-```r
+``` r
 *ds %&gt;% mutate(word_cleaned = str_replace_all(word, "[:punct:]"," "))
 ```
 ]
@@ -1590,7 +1581,7 @@ count: false
  8 16    shoes       shoes       
  9 16.5  monkey      monkey      
 10 17    hello       hello       
-# … with 430 more rows
+# ℹ 430 more rows
 ```
 ]
 
@@ -1600,7 +1591,7 @@ count: false
 # Matching patterns
 .panel1-patterns-rotate[
 
-```r
+``` r
 *ds %&gt;% mutate(vowel_count = str_count(word, "[aeiou]"))
 ```
 ]
@@ -1621,7 +1612,7 @@ count: false
  8 16    shoes                 2
  9 16.5  monkey                2
 10 17    hello                 2
-# … with 430 more rows
+# ℹ 430 more rows
 ```
 ]
 
@@ -1631,7 +1622,7 @@ count: false
 # Matching patterns
 .panel1-patterns-rotate[
 
-```r
+``` r
 *ds %&gt;% mutate(is_three_letter = str_detect(word, "[:alnum:{3}]"))
 ```
 ]
@@ -1652,7 +1643,7 @@ count: false
  8 16    shoes       FALSE          
  9 16.5  monkey      TRUE           
 10 17    hello       TRUE           
-# … with 430 more rows
+# ℹ 430 more rows
 ```
 ]
 
@@ -1689,7 +1680,7 @@ count: false
 
 ---
 
-```r
+``` r
 fnames &lt;- list.files(path="data_raw", full.names = T)
 print(fnames)
 ```
@@ -1712,7 +1703,7 @@ count: false
 # Matching patterns
 .panel1-morepatterns-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path="data_raw", full.names = T)
 *str_split(fnames, "/")
 ```
@@ -1801,7 +1792,7 @@ count: false
 # Matching patterns
 .panel1-morepatterns-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path="data_raw", full.names = T)
 *str_replace_all(fnames, "data_raw/|.csv|vocab","")
 ```
@@ -1822,7 +1813,7 @@ count: false
 # Matching patterns
 .panel1-morepatterns-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path="data_raw", full.names = T)
 *str_extract_all(fnames, "\\d{2}.\\d{1}|\\d{2}", simplify = T)
 ```
@@ -1865,7 +1856,7 @@ count: false
 # Matching patterns
 .panel1-morepatterns-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path="data_raw", full.names = T)
 *str_extract_all(fnames, "\\.[:alpha:]{1,4}", simplify = T)
 ```
@@ -1908,7 +1899,7 @@ count: false
 # Matching patterns
 .panel1-morepatterns-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path="data_raw", full.names = T)
 *str_extract_all(ds$word, boundary("word"), simplify = T)
 ```
@@ -2398,7 +2389,7 @@ count: false
 # Combining strings
 .panel1-combiningstrings-rotate[
 
-```r
+``` r
 age &lt;- seq(from = 12, to = 24, by = .5)
 *paste0("data_raw/vocab", age, ".csv")
 ```
@@ -2425,7 +2416,7 @@ count: false
 # Combining strings
 .panel1-combiningstrings-rotate[
 
-```r
+``` r
 age &lt;- seq(from = 12, to = 24, by = .5)
 *str_glue("data_raw/vocab{age}.csv")
 ```
@@ -2468,16 +2459,16 @@ count: false
 # Combining strings
 .panel1-combiningstrings-rotate[
 
-```r
+``` r
 age &lt;- seq(from = 12, to = 24, by = .5)
-*str_glue("Today's date and time are {now()}")
+*str_glue("Tabea last modified these slides at {now()}")
 ```
 ]
  
 .panel2-combiningstrings-rotate[
 
 ```
-Today's date and time are 2022-01-31 12:52:45
+Tabea last modified these slides at 2025-02-09 09:30:22.140672
 ```
 ]
 
@@ -2487,7 +2478,7 @@ count: false
 # Combining strings
 .panel1-combiningstrings-rotate[
 
-```r
+``` r
 age &lt;- seq(from = 12, to = 24, by = .5)
 *str_glue("Here is pi to {x} digits: {format(pi, digits = x)}", x = 3)
 ```
@@ -2506,7 +2497,7 @@ count: false
 # Combining strings
 .panel1-combiningstrings-rotate[
 
-```r
+``` r
 age &lt;- seq(from = 12, to = 24, by = .5)
 *str_glue("Here is pi to {x} digits: {format(pi, digits = x)}", x = 4)
 ```
@@ -2525,7 +2516,7 @@ count: false
 # Combining strings
 .panel1-combiningstrings-rotate[
 
-```r
+``` r
 age &lt;- seq(from = 12, to = 24, by = .5)
 *str_glue("Here is pi to {x} digits: {format(pi, digits = x)}", x = 5)
 ```
@@ -2544,7 +2535,7 @@ count: false
 # Combining strings
 .panel1-combiningstrings-rotate[
 
-```r
+``` r
 age &lt;- seq(from = 12, to = 24, by = .5)
 *str_glue("Here is pi to {x} digits: {format(pi, digits = x)}", x = 6)
 ```
@@ -2604,7 +2595,7 @@ count: false
 # Parsing dates
 .panel1-parse-rotate[
 
-```r
+``` r
 dates  # ROTATE
 *dates %&gt;% mutate(dates1_parsed = ymd(dates1))
 ```
@@ -2639,7 +2630,7 @@ count: false
 # Parsing dates
 .panel1-parse-rotate[
 
-```r
+``` r
 dates  # ROTATE
 *dates %&gt;% mutate(dates2_parsed = mdy(dates2))
 ```
@@ -2674,7 +2665,7 @@ count: false
 # Parsing dates
 .panel1-parse-rotate[
 
-```r
+``` r
 dates  # ROTATE
 *dates %&gt;% mutate(dates3_parsed = parse_date(dates3, format = "%B %d, %Y"))
 ```
@@ -2742,7 +2733,7 @@ dates  # ROTATE
   * lubridate `periods` represent the passage of calendar time
 
 
-```r
+``` r
 time_length(mdy("05-27-2022")-mdy("05-27-1983"), "years")
 ```
 
@@ -2750,7 +2741,7 @@ time_length(mdy("05-27-2022")-mdy("05-27-1983"), "years")
 [1] 39.00068
 ```
 
-```r
+``` r
 time_length(as.period(interval(mdy("05-27-1983"), mdy("05-27-2022"))), "years")
 ```
 
@@ -2758,7 +2749,7 @@ time_length(as.period(interval(mdy("05-27-1983"), mdy("05-27-2022"))), "years")
 [1] 39
 ```
 
-```r
+``` r
 time_length(as.period(interval(mdy("05-27-1983"), mdy("05-28-2022"))), "years")
 ```
 
@@ -2772,7 +2763,7 @@ count: false
 # Age math
 .panel1-age-auto[
 
-```r
+``` r
 *birth_date &lt;- ymd("2001-09-01", "2000-09-01")
 ```
 ]
@@ -2787,7 +2778,7 @@ count: false
 # Age math
 .panel1-age-auto[
 
-```r
+``` r
 birth_date &lt;- ymd("2001-09-01", "2000-09-01")
 *test_date &lt;- ymd("2020-09-01", "2019-09-01")
 ```
@@ -2803,7 +2794,7 @@ count: false
 # Age math
 .panel1-age-auto[
 
-```r
+``` r
 birth_date &lt;- ymd("2001-09-01", "2000-09-01")
 test_date &lt;- ymd("2020-09-01", "2019-09-01")
 *(test_date-birth_date)/365.25
@@ -2824,7 +2815,7 @@ count: false
 # Age math
 .panel1-age-auto[
 
-```r
+``` r
 birth_date &lt;- ymd("2001-09-01", "2000-09-01")
 test_date &lt;- ymd("2020-09-01", "2019-09-01")
 (test_date-birth_date)/365.25
@@ -2850,7 +2841,7 @@ count: false
 # Age math
 .panel1-age-auto[
 
-```r
+``` r
 birth_date &lt;- ymd("2001-09-01", "2000-09-01")
 test_date &lt;- ymd("2020-09-01", "2019-09-01")
 (test_date-birth_date)/365.25
@@ -2911,7 +2902,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 *t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 ```
 ]
@@ -2926,7 +2917,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 *t1
 ```
@@ -2945,7 +2936,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 t1
 *tz(t1)
@@ -2969,7 +2960,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 t1
 tz(t1)
@@ -2994,7 +2985,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 t1
 tz(t1)
@@ -3024,7 +3015,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 t1
 tz(t1)
@@ -3055,7 +3046,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 t1
 tz(t1)
@@ -3091,7 +3082,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 t1
 tz(t1)
@@ -3132,7 +3123,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 t1
 tz(t1)
@@ -3178,7 +3169,7 @@ count: false
 # Time Zones
 .panel1-tz-auto[
 
-```r
+``` r
 t1 &lt;- as_datetime("2022-01-27 10:39:28", tz = "America/Los_Angeles")
 t1
 tz(t1)
@@ -3257,7 +3248,7 @@ Time difference of 0 secs
 ---
 # Factors represent categories
 
-```r
+``` r
 x &lt;- c(1, 1, 2, 3, 1, 4)
 x &lt;- factor(x, levels = c(1,2,3), labels = c("rarely", "neutral", "frequently"))
 x
@@ -3279,7 +3270,7 @@ count: false
 # Factors
 .panel1-factors-auto[
 
-```r
+``` r
 *ds &lt;- starwars
 ```
 ]
@@ -3294,7 +3285,7 @@ count: false
 # Factors
 .panel1-factors-auto[
 
-```r
+``` r
 ds &lt;- starwars
 *unique(ds$eye_color)
 ```
@@ -3316,7 +3307,7 @@ count: false
 # Factors
 .panel1-factors-auto[
 
-```r
+``` r
 ds &lt;- starwars
 unique(ds$eye_color)
 *ds &lt;- ds %&gt;% mutate(eye_f = factor(eye_color))
@@ -3339,7 +3330,7 @@ count: false
 # Factors
 .panel1-factors-auto[
 
-```r
+``` r
 ds &lt;- starwars
 unique(ds$eye_color)
 ds &lt;- ds %&gt;% mutate(eye_f = factor(eye_color))
@@ -3374,7 +3365,7 @@ count: false
 # Factors
 .panel1-factors-auto[
 
-```r
+``` r
 ds &lt;- starwars
 unique(ds$eye_color)
 ds &lt;- ds %&gt;% mutate(eye_f = factor(eye_color))
@@ -3452,7 +3443,7 @@ count: false
 # Setting factor levels
 .panel1-releveling-rotate[
 
-```r
+``` r
 ds &lt;- ds %&gt;% select(name, eye_f)
 *ds
 ```
@@ -3470,11 +3461,11 @@ ds &lt;- ds %&gt;% select(name, eye_f)
  4 Darth Vader        yellow   
  5 Leia Organa        brown    
  6 Owen Lars          blue     
- 7 Beru Whitesun lars blue     
+ 7 Beru Whitesun Lars blue     
  8 R5-D4              red      
  9 Biggs Darklighter  brown    
 10 Obi-Wan Kenobi     blue-gray
-# … with 77 more rows
+# ℹ 77 more rows
 ```
 ]
 
@@ -3484,7 +3475,7 @@ count: false
 # Setting factor levels
 .panel1-releveling-rotate[
 
-```r
+``` r
 ds &lt;- ds %&gt;% select(name, eye_f)
 *ds %&gt;% mutate(eye_f2 = factor(eye_f, levels = c("blue", "brown")))
 ```
@@ -3502,11 +3493,11 @@ ds &lt;- ds %&gt;% select(name, eye_f)
  4 Darth Vader        yellow    &lt;NA&gt;  
  5 Leia Organa        brown     brown 
  6 Owen Lars          blue      blue  
- 7 Beru Whitesun lars blue      blue  
+ 7 Beru Whitesun Lars blue      blue  
  8 R5-D4              red       &lt;NA&gt;  
  9 Biggs Darklighter  brown     brown 
 10 Obi-Wan Kenobi     blue-gray &lt;NA&gt;  
-# … with 77 more rows
+# ℹ 77 more rows
 ```
 ]
 
@@ -3516,7 +3507,7 @@ count: false
 # Setting factor levels
 .panel1-releveling-rotate[
 
-```r
+``` r
 ds &lt;- ds %&gt;% select(name, eye_f)
 *ds %&gt;% mutate(eye_f2 = factor(eye_f, levels = c("blue", "brown"), labels = c("bl","br")))
 ```
@@ -3534,11 +3525,11 @@ ds &lt;- ds %&gt;% select(name, eye_f)
  4 Darth Vader        yellow    &lt;NA&gt;  
  5 Leia Organa        brown     br    
  6 Owen Lars          blue      bl    
- 7 Beru Whitesun lars blue      bl    
+ 7 Beru Whitesun Lars blue      bl    
  8 R5-D4              red       &lt;NA&gt;  
  9 Biggs Darklighter  brown     br    
 10 Obi-Wan Kenobi     blue-gray &lt;NA&gt;  
-# … with 77 more rows
+# ℹ 77 more rows
 ```
 ]
 
@@ -3548,7 +3539,7 @@ count: false
 # Setting factor levels
 .panel1-releveling-rotate[
 
-```r
+``` r
 ds &lt;- ds %&gt;% select(name, eye_f)
 *ds %&gt;% mutate(eye_f2 = fct_lump(eye_f, n = 3))
 ```
@@ -3566,11 +3557,11 @@ ds &lt;- ds %&gt;% select(name, eye_f)
  4 Darth Vader        yellow    yellow
  5 Leia Organa        brown     brown 
  6 Owen Lars          blue      blue  
- 7 Beru Whitesun lars blue      blue  
+ 7 Beru Whitesun Lars blue      blue  
  8 R5-D4              red       Other 
  9 Biggs Darklighter  brown     brown 
 10 Obi-Wan Kenobi     blue-gray Other 
-# … with 77 more rows
+# ℹ 77 more rows
 ```
 ]
 
@@ -3580,7 +3571,7 @@ count: false
 # Setting factor levels
 .panel1-releveling-rotate[
 
-```r
+``` r
 ds &lt;- ds %&gt;% select(name, eye_f)
 *ds %&gt;% mutate(eye_type = fct_collapse(eye_f, human = c("blue", "brown"), nonhuman = c("yellow", "red")))
 ```
@@ -3598,11 +3589,11 @@ ds &lt;- ds %&gt;% select(name, eye_f)
  4 Darth Vader        yellow    nonhuman 
  5 Leia Organa        brown     human    
  6 Owen Lars          blue      human    
- 7 Beru Whitesun lars blue      human    
+ 7 Beru Whitesun Lars blue      human    
  8 R5-D4              red       nonhuman 
  9 Biggs Darklighter  brown     human    
 10 Obi-Wan Kenobi     blue-gray blue-gray
-# … with 77 more rows
+# ℹ 77 more rows
 ```
 ]
 
@@ -3643,7 +3634,7 @@ count: false
 # Reordering factor levels
 .panel1-reordering-rotate[
 
-```r
+``` r
 *fct_count(ds$eye_f)
 ```
 ]
@@ -3678,7 +3669,7 @@ count: false
 # Reordering factor levels
 .panel1-reordering-rotate[
 
-```r
+``` r
 *fct_count(fct_rev(ds$eye_f))
 ```
 ]
@@ -3713,7 +3704,7 @@ count: false
 # Reordering factor levels
 .panel1-reordering-rotate[
 
-```r
+``` r
 *fct_count(fct_infreq(ds$eye_f))
 ```
 ]
@@ -3748,7 +3739,7 @@ count: false
 # Reordering factor levels
 .panel1-reordering-rotate[
 
-```r
+``` r
 *fct_count(factor(ds$eye_f, levels = c("red", "brown", "blue")))
 ```
 ]
@@ -3822,7 +3813,7 @@ count: false
 - Challenging to summarize, each income level needs to be treated as a separate variable
 - Can't use filter to subset each kind of observation
 
-```r
+``` r
 relig_income %&gt;% slice_head(n = 5)
 ```
 
@@ -3835,15 +3826,15 @@ relig_income %&gt;% slice_head(n = 5)
 3 Buddhist       27        21        30        34        33        58         62
 4 Catholic      418       617       732       670       638      1116        949
 5 Don’t kn…      15        14        15        11        10        35         21
-# … with 3 more variables: $100-150k &lt;dbl&gt;, &gt;150k &lt;dbl&gt;,
-#   Don't know/refused &lt;dbl&gt;
+# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,
+#   `Don't know/refused` &lt;dbl&gt;
 ```
 
 ---
 #Solution: tidyr's pivot_longer() function
 
 
-```r
+``` r
 relig_income %&gt;% 
   pivot_longer(cols = -religion, names_to = "income", values_to = "count")
 ```
@@ -3862,7 +3853,7 @@ relig_income %&gt;%
  8 Agnostic $100-150k            109
  9 Agnostic &gt;150k                 84
 10 Agnostic Don't know/refused    96
-# … with 170 more rows
+# ℹ 170 more rows
 ```
 
 ---
@@ -3871,7 +3862,7 @@ count: false
 
 .panel1-pivotlong-rotate[
 
-```r
+``` r
 ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
   mutate(id = "Jonah", dob = as.Date("2017-08-30"), .before = "age_12")
 *ds %&gt;% print(n = 25)
@@ -3909,11 +3900,11 @@ ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
 23 Jonah 2017-08-30 &lt;NA&gt;    &lt;NA&gt;     NA     &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;         &lt;NA&gt;  
 24 Jonah 2017-08-30 &lt;NA&gt;    &lt;NA&gt;     NA     &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;         &lt;NA&gt;  
 25 Jonah 2017-08-30 &lt;NA&gt;    &lt;NA&gt;     NA     &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;         &lt;NA&gt;  
-# … with 26 more rows, and 18 more variables: age_15.5 &lt;chr&gt;, age_16 &lt;chr&gt;,
-#   age_16.5 &lt;chr&gt;, age_17 &lt;chr&gt;, age_17.5 &lt;chr&gt;, age_18 &lt;chr&gt;, age_18.5 &lt;chr&gt;,
-#   age_19 &lt;chr&gt;, age_19.5 &lt;chr&gt;, age_20 &lt;chr&gt;, age_20.5 &lt;chr&gt;, age_21 &lt;chr&gt;,
-#   age_21.5 &lt;chr&gt;, age_22 &lt;chr&gt;, age_22.5 &lt;chr&gt;, age_23 &lt;chr&gt;, age_23.5 &lt;chr&gt;,
-#   age_24 &lt;chr&gt;
+# ℹ 26 more rows
+# ℹ 18 more variables: age_15.5 &lt;chr&gt;, age_16 &lt;chr&gt;, age_16.5 &lt;chr&gt;,
+#   age_17 &lt;chr&gt;, age_17.5 &lt;chr&gt;, age_18 &lt;chr&gt;, age_18.5 &lt;chr&gt;, age_19 &lt;chr&gt;,
+#   age_19.5 &lt;chr&gt;, age_20 &lt;chr&gt;, age_20.5 &lt;chr&gt;, age_21 &lt;chr&gt;, age_21.5 &lt;chr&gt;,
+#   age_22 &lt;chr&gt;, age_22.5 &lt;chr&gt;, age_23 &lt;chr&gt;, age_23.5 &lt;chr&gt;, age_24 &lt;chr&gt;
 ```
 ]
 
@@ -3923,7 +3914,7 @@ count: false
 
 .panel1-pivotlong-rotate[
 
-```r
+``` r
 ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
   mutate(id = "Jonah", dob = as.Date("2017-08-30"), .before = "age_12")
 *ds %&gt;% pivot_longer(-(id:dob), names_to = "age", values_to = "word") %&gt;% print(n = 65)
@@ -4001,7 +3992,7 @@ ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
 63 Jonah 2017-08-30 age_18   dinosaur     
 64 Jonah 2017-08-30 age_18.5 wow          
 65 Jonah 2017-08-30 age_19   snack/food   
-# … with 1,210 more rows
+# ℹ 1,210 more rows
 ```
 ]
 
@@ -4011,7 +4002,7 @@ count: false
 
 .panel1-pivotlong-rotate[
 
-```r
+``` r
 ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
   mutate(id = "Jonah", dob = as.Date("2017-08-30"), .before = "age_12")
 *ds %&gt;% pivot_longer(-(id:dob), names_to = "age", names_prefix = "age_", values_to = "word") %&gt;% print(n = 65)
@@ -4089,7 +4080,7 @@ ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
 63 Jonah 2017-08-30 18    dinosaur     
 64 Jonah 2017-08-30 18.5  wow          
 65 Jonah 2017-08-30 19    snack/food   
-# … with 1,210 more rows
+# ℹ 1,210 more rows
 ```
 ]
 
@@ -4099,7 +4090,7 @@ count: false
 
 .panel1-pivotlong-rotate[
 
-```r
+``` r
 ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
   mutate(id = "Jonah", dob = as.Date("2017-08-30"), .before = "age_12")
 *ds %&gt;% pivot_longer(-(id:dob), names_to = "age", values_to = "word", values_drop_na = T, names_prefix = "age_") %&gt;% print(n = 65)
@@ -4177,7 +4168,7 @@ ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
 63 Jonah 2017-08-30 23.5  over there   
 64 Jonah 2017-08-30 24    make         
 65 Jonah 2017-08-30 16    diaper       
-# … with 375 more rows
+# ℹ 375 more rows
 ```
 ]
 
@@ -4219,7 +4210,7 @@ ds &lt;- read_csv('data_cleaned/vocab_annoying_headers.csv') %&gt;%
 - Mixing types in the same column
 - No meaningful summary of “value”
 
-```r
+``` r
 print(ds)
 ```
 
@@ -4237,13 +4228,13 @@ print(ds)
  8 data_headers/6191_2.txt Participant 6191 
  9 data_headers/6191_2.txt Age         25   
 10 data_headers/6191_2.txt Sex         male 
-# … with 74 more rows
+# ℹ 74 more rows
 ```
 ---
 #Solution: tidyr's `pivot_wider()`
 
 
-```r
+``` r
 ds &lt;- ds %&gt;% pivot_wider(id_cols = "filename", 
                          names_from = "field", 
                          values_from = "value")
@@ -4271,7 +4262,7 @@ ds
 # Types of untidy data: Multiple variables in each cell
 - Solution: tidyr's `separate()` function splits delimited text into separate cells
 
-```r
+``` r
 ds %&gt;% separate(filename, into = c("dir_part1", "dir_part2", "ppt_file","ppt_block","exten"))
 ```
 
@@ -4291,14 +4282,14 @@ ds %&gt;% separate(filename, into = c("dir_part1", "dir_part2", "ppt_file","ppt_
 10 data      headers   6192     4         txt   6192        21    male  2    
 11 data      headers   6192     5         txt   6192        21    male  2    
 12 data      headers   6192     6         txt   6192        21    male  2    
-# … with 3 more variables: FirstSpeed &lt;chr&gt;, Block &lt;chr&gt;, speed &lt;chr&gt;
+# ℹ 3 more variables: FirstSpeed &lt;chr&gt;, Block &lt;chr&gt;, speed &lt;chr&gt;
 ```
 
 ---
 # Types of untidy data: Multiple variables in each cell
 - Solution: tidyr's `separate()` function splits delimited text into separate cells
 
-```r
+``` r
 ds %&gt;% separate(filename, into = c(NA, NA, "ppt_file","ppt_block",NA))
 ```
 
@@ -4324,7 +4315,7 @@ ds %&gt;% separate(filename, into = c(NA, NA, "ppt_file","ppt_block",NA))
 # Types of untidy data: Multiple variables in each cell
 - Solution: tidyr's `separate()` function splits delimited text into separate cells
 
-```r
+``` r
 ds %&gt;% separate(filename, into = c(NA, NA, "ppt_file","ppt_block",NA)) %&gt;% 
   mutate(across(-Sex, as.numeric))
 ```
@@ -4351,7 +4342,7 @@ ds %&gt;% separate(filename, into = c(NA, NA, "ppt_file","ppt_block",NA)) %&gt;%
 # Types of untidy data: Multiple variables in each cell
 - Solution: tidyr's `separate()` function splits delimited text into separate cells
 
-```r
+``` r
 ds %&gt;% separate(filename, into = c("dir","file"), sep = "/")
 ```
 
@@ -4386,7 +4377,7 @@ ds %&gt;% separate(filename, into = c("dir","file"), sep = "/")
 # Binding Columns
 
 
-```r
+``` r
 star_wars_numeric &lt;- starwars %&gt;% select(where(is.numeric)) #87x3
 star_wars_char &lt;- starwars %&gt;% select(where(is.character)) #87x8
 star_wars_combined &lt;- bind_cols(star_wars_numeric, star_wars_char) #87x11
@@ -4395,26 +4386,27 @@ star_wars_combined
 
 ```
 # A tibble: 87 × 11
-   height  mass birth_year name    hair_color  skin_color eye_color sex   gender
-    &lt;int&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; 
- 1    172    77       19   Luke S… blond       fair       blue      male  mascu…
- 2    167    75      112   C-3PO   &lt;NA&gt;        gold       yellow    none  mascu…
- 3     96    32       33   R2-D2   &lt;NA&gt;        white, bl… red       none  mascu…
- 4    202   136       41.9 Darth … none        white      yellow    male  mascu…
- 5    150    49       19   Leia O… brown       light      brown     fema… femin…
- 6    178   120       52   Owen L… brown, grey light      blue      male  mascu…
- 7    165    75       47   Beru W… brown       light      blue      fema… femin…
- 8     97    32       NA   R5-D4   &lt;NA&gt;        white, red red       none  mascu…
- 9    183    84       24   Biggs … black       light      brown     male  mascu…
-10    182    77       57   Obi-Wa… auburn, wh… fair       blue-gray male  mascu…
-# … with 77 more rows, and 2 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;
+   height  mass birth_year name     hair_color skin_color eye_color sex   gender
+    &lt;int&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; 
+ 1    172    77       19   Luke Sk… blond      fair       blue      male  mascu…
+ 2    167    75      112   C-3PO    &lt;NA&gt;       gold       yellow    none  mascu…
+ 3     96    32       33   R2-D2    &lt;NA&gt;       white, bl… red       none  mascu…
+ 4    202   136       41.9 Darth V… none       white      yellow    male  mascu…
+ 5    150    49       19   Leia Or… brown      light      brown     fema… femin…
+ 6    178   120       52   Owen La… brown, gr… light      blue      male  mascu…
+ 7    165    75       47   Beru Wh… brown      light      blue      fema… femin…
+ 8     97    32       NA   R5-D4    &lt;NA&gt;       white, red red       none  mascu…
+ 9    183    84       24   Biggs D… black      light      brown     male  mascu…
+10    182    77       57   Obi-Wan… auburn, w… fair       blue-gray male  mascu…
+# ℹ 77 more rows
+# ℹ 2 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;
 ```
 
 ---
 # Binding Rows
 
 
-```r
+``` r
 s1 &lt;- starwars %&gt;% slice_sample(n = 2) #2x14
 s2 &lt;- starwars %&gt;% slice_sample(n = 2) #2x14
 s3 &lt;- starwars %&gt;% slice_sample(n = 2) #2x14
@@ -4424,15 +4416,15 @@ star_wars_combined
 
 ```
 # A tibble: 6 × 14
-  name     height  mass hair_color skin_color  eye_color birth_year sex   gender
-  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
-1 Bail Pr…    191    NA black      tan         brown             67 male  mascu…
-2 Ben Qua…    163    65 none       grey, gree… orange            NA male  mascu…
-3 Sly Moo…    178    48 none       pale        white             NA &lt;NA&gt;  &lt;NA&gt;  
-4 Tion Me…    206    80 none       grey        black             NA male  mascu…
-5 Mas Ame…    196    NA none       blue        blue              NA male  mascu…
-6 Sebulba     112    40 none       grey, red   orange            NA male  mascu…
-# … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+  name      height  mass hair_color skin_color eye_color birth_year sex   gender
+  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+1 Ratts Ty…     79    15 none       grey, blue unknown           NA male  mascu…
+2 Jar Jar …    196    66 none       orange     orange            52 male  mascu…
+3 Nute Gun…    191    90 none       mottled g… red               NA male  mascu…
+4 Obi-Wan …    182    77 auburn, w… fair       blue-gray         57 male  mascu…
+5 Cliegg L…    183    NA brown      fair       blue              82 male  mascu…
+6 Kit Fisto    196    87 none       green      black             NA male  mascu…
+# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 #   vehicles &lt;list&gt;, starships &lt;list&gt;
 ```
 
@@ -4442,7 +4434,7 @@ count: false
 # Joining by key value
 .panel1-join-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path = "data_headers", full.names = T)
 header &lt;- read_delim(fnames, col_names = c("field", "value"), col_types = c("cc"), delim = " ", n_max = 7, id = "filename") %&gt;% pivot_wider(id_cols = "filename", names_from = "field", values_from = "value")
 trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_resp", "correct"), skip = 8, id = "filename")
@@ -4477,7 +4469,7 @@ count: false
 # Joining by key value
 .panel1-join-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path = "data_headers", full.names = T)
 header &lt;- read_delim(fnames, col_names = c("field", "value"), col_types = c("cc"), delim = " ", n_max = 7, id = "filename") %&gt;% pivot_wider(id_cols = "filename", names_from = "field", values_from = "value")
 trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_resp", "correct"), skip = 8, id = "filename")
@@ -4501,7 +4493,7 @@ trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_
  8 data_headers/6191_1.txt         8 slo          slower     TRUE   
  9 data_headers/6191_1.txt         9 slo          slower     TRUE   
 10 data_headers/6191_1.txt        10 slo          faster     FALSE  
-# … with 230 more rows
+# ℹ 230 more rows
 ```
 ]
 
@@ -4511,7 +4503,7 @@ count: false
 # Joining by key value
 .panel1-join-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path = "data_headers", full.names = T)
 header &lt;- read_delim(fnames, col_names = c("field", "value"), col_types = c("cc"), delim = " ", n_max = 7, id = "filename") %&gt;% pivot_wider(id_cols = "filename", names_from = "field", values_from = "value")
 trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_resp", "correct"), skip = 8, id = "filename")
@@ -4535,8 +4527,8 @@ trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_
  8 data_headers/… 6191        25    male  1     4          1     4             8
  9 data_headers/… 6191        25    male  1     4          1     4             9
 10 data_headers/… 6191        25    male  1     4          1     4            10
-# … with 230 more rows, and 3 more variables: speed_actual &lt;chr&gt;,
-#   speed_resp &lt;chr&gt;, correct &lt;lgl&gt;
+# ℹ 230 more rows
+# ℹ 3 more variables: speed_actual &lt;chr&gt;, speed_resp &lt;chr&gt;, correct &lt;lgl&gt;
 ```
 ]
 
@@ -4546,7 +4538,7 @@ count: false
 # Joining by key value
 .panel1-join-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path = "data_headers", full.names = T)
 header &lt;- read_delim(fnames, col_names = c("field", "value"), col_types = c("cc"), delim = " ", n_max = 7, id = "filename") %&gt;% pivot_wider(id_cols = "filename", names_from = "field", values_from = "value")
 trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_resp", "correct"), skip = 8, id = "filename")
@@ -4560,18 +4552,18 @@ trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_
 # A tibble: 100 × 12
    filename       Participant Age   Sex   Order FirstSpeed Block speed trial_num
    &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
- 1 data_headers/… 6191        25    male  1     4          2     7             1
- 2 data_headers/… 6191        25    male  1     4          2     7             2
- 3 data_headers/… 6191        25    male  1     4          2     7             3
- 4 data_headers/… 6191        25    male  1     4          2     7             4
- 5 data_headers/… 6191        25    male  1     4          2     7             5
- 6 data_headers/… 6191        25    male  1     4          2     7             6
- 7 data_headers/… 6191        25    male  1     4          2     7             7
- 8 data_headers/… 6191        25    male  1     4          2     7             8
- 9 data_headers/… 6191        25    male  1     4          2     7             9
-10 data_headers/… 6191        25    male  1     4          2     7            10
-# … with 90 more rows, and 3 more variables: speed_actual &lt;chr&gt;,
-#   speed_resp &lt;chr&gt;, correct &lt;lgl&gt;
+ 1 data_headers/… 6192        21    male  2     4          4     7             1
+ 2 data_headers/… 6192        21    male  2     4          4     7             2
+ 3 data_headers/… 6192        21    male  2     4          4     7             3
+ 4 data_headers/… 6192        21    male  2     4          4     7             4
+ 5 data_headers/… 6192        21    male  2     4          4     7             5
+ 6 data_headers/… 6192        21    male  2     4          4     7             6
+ 7 data_headers/… 6192        21    male  2     4          4     7             7
+ 8 data_headers/… 6192        21    male  2     4          4     7             8
+ 9 data_headers/… 6192        21    male  2     4          4     7             9
+10 data_headers/… 6192        21    male  2     4          4     7            10
+# ℹ 90 more rows
+# ℹ 3 more variables: speed_actual &lt;chr&gt;, speed_resp &lt;chr&gt;, correct &lt;lgl&gt;
 ```
 ]
 
@@ -4581,7 +4573,7 @@ count: false
 # Joining by key value
 .panel1-join-rotate[
 
-```r
+``` r
 fnames &lt;- list.files(path = "data_headers", full.names = T)
 header &lt;- read_delim(fnames, col_names = c("field", "value"), col_types = c("cc"), delim = " ", n_max = 7, id = "filename") %&gt;% pivot_wider(id_cols = "filename", names_from = "field", values_from = "value")
 trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_resp", "correct"), skip = 8, id = "filename")
@@ -4595,13 +4587,12 @@ trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_
 # A tibble: 5 × 12
   filename     trial_num speed_actual speed_resp correct Participant Age   Sex  
   &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;lgl&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;
-1 data_header…        11 fas          faster     TRUE    6192        21    male 
-2 data_header…        12 slo          faster     FALSE   6192        21    male 
-3 data_header…        16 fas          slower     FALSE   6192        21    male 
-4 data_header…         2 slo          slower     TRUE    6192        21    male 
-5 data_header…         1 slo          slower     TRUE    6191        25    male 
-# … with 4 more variables: Order &lt;chr&gt;, FirstSpeed &lt;chr&gt;, Block &lt;chr&gt;,
-#   speed &lt;chr&gt;
+1 data_header…         6 fas          faster     TRUE    6192        21    male 
+2 data_header…        16 fas          slower     FALSE   6192        21    male 
+3 data_header…         1 slo          slower     TRUE    6192        21    male 
+4 data_header…         1 fas          slower     FALSE   6191        25    male 
+5 data_header…        15 fas          faster     TRUE    6191        25    male 
+# ℹ 4 more variables: Order &lt;chr&gt;, FirstSpeed &lt;chr&gt;, Block &lt;chr&gt;, speed &lt;chr&gt;
 ```
 ]
 
@@ -4836,6 +4827,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

@@ -1,7 +1,7 @@
 ---
 title: "R data structure with stringr, forcats, lubridate, and tidyr"
 subtitle: "PSYC 259: Principles of Data Science"
-author: "John Franchak"
+author: "John Franchak, with minimal updates by Tabea Springstein"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -228,7 +228,7 @@ str_extract_all(ds$word, boundary("word"), simplify = T) #ROTATE
 age <- seq(from = 12, to = 24, by = .5) 
 paste0("data_raw/vocab", age, ".csv") #ROTATE
 str_glue("data_raw/vocab{age}.csv") #ROTATE
-str_glue("Today's date and time are {now()}") #ROTATE
+str_glue("Tabea last modified these slides at {now()}") #ROTATE
 str_glue("Here is pi to {x} digits: {format(pi, digits = x)}", x = 3) #ROTATE
 str_glue("Here is pi to {x} digits: {format(pi, digits = x)}", x = 4) #ROTATE
 str_glue("Here is pi to {x} digits: {format(pi, digits = x)}", x = 5) #ROTATE
