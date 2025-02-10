@@ -2468,7 +2468,7 @@ age &lt;- seq(from = 12, to = 24, by = .5)
 .panel2-combiningstrings-rotate[
 
 ```
-Tabea last modified these slides at 2025-02-09 09:30:22.140672
+Tabea last modified these slides at 2025-02-09 21:32:11.616225
 ```
 ]
 
@@ -4418,12 +4418,12 @@ star_wars_combined
 # A tibble: 6 × 14
   name      height  mass hair_color skin_color eye_color birth_year sex   gender
   &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
-1 Ratts Ty…     79    15 none       grey, blue unknown           NA male  mascu…
-2 Jar Jar …    196    66 none       orange     orange            52 male  mascu…
-3 Nute Gun…    191    90 none       mottled g… red               NA male  mascu…
-4 Obi-Wan …    182    77 auburn, w… fair       blue-gray         57 male  mascu…
-5 Cliegg L…    183    NA brown      fair       blue              82 male  mascu…
-6 Kit Fisto    196    87 none       green      black             NA male  mascu…
+1 BB8           NA    NA none       none       black             NA none  mascu…
+2 Finn          NA    NA black      dark       dark              NA male  mascu…
+3 Luke Sky…    172    77 blond      fair       blue              19 male  mascu…
+4 Poe Dame…     NA    NA brown      light      brown             NA male  mascu…
+5 Sebulba      112    40 none       grey, red  orange            NA male  mascu…
+6 Barriss …    166    50 black      yellow     blue              40 fema… femin…
 # ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 #   vehicles &lt;list&gt;, starships &lt;list&gt;
 ```
@@ -4552,16 +4552,16 @@ trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_
 # A tibble: 100 × 12
    filename       Participant Age   Sex   Order FirstSpeed Block speed trial_num
    &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
- 1 data_headers/… 6192        21    male  2     4          4     7             1
- 2 data_headers/… 6192        21    male  2     4          4     7             2
- 3 data_headers/… 6192        21    male  2     4          4     7             3
- 4 data_headers/… 6192        21    male  2     4          4     7             4
- 5 data_headers/… 6192        21    male  2     4          4     7             5
- 6 data_headers/… 6192        21    male  2     4          4     7             6
- 7 data_headers/… 6192        21    male  2     4          4     7             7
- 8 data_headers/… 6192        21    male  2     4          4     7             8
- 9 data_headers/… 6192        21    male  2     4          4     7             9
-10 data_headers/… 6192        21    male  2     4          4     7            10
+ 1 data_headers/… 6192        21    male  2     4          1     4             1
+ 2 data_headers/… 6192        21    male  2     4          1     4             2
+ 3 data_headers/… 6192        21    male  2     4          1     4             3
+ 4 data_headers/… 6192        21    male  2     4          1     4             4
+ 5 data_headers/… 6192        21    male  2     4          1     4             5
+ 6 data_headers/… 6192        21    male  2     4          1     4             6
+ 7 data_headers/… 6192        21    male  2     4          1     4             7
+ 8 data_headers/… 6192        21    male  2     4          1     4             8
+ 9 data_headers/… 6192        21    male  2     4          1     4             9
+10 data_headers/… 6192        21    male  2     4          1     4            10
 # ℹ 90 more rows
 # ℹ 3 more variables: speed_actual &lt;chr&gt;, speed_resp &lt;chr&gt;, correct &lt;lgl&gt;
 ```
@@ -4587,11 +4587,11 @@ trials &lt;- read_tsv(fnames, col_names = c("trial_num", "speed_actual", "speed_
 # A tibble: 5 × 12
   filename     trial_num speed_actual speed_resp correct Participant Age   Sex  
   &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;lgl&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;
-1 data_header…         6 fas          faster     TRUE    6192        21    male 
-2 data_header…        16 fas          slower     FALSE   6192        21    male 
-3 data_header…         1 slo          slower     TRUE    6192        21    male 
-4 data_header…         1 fas          slower     FALSE   6191        25    male 
-5 data_header…        15 fas          faster     TRUE    6191        25    male 
+1 data_header…        13 slo          slower     TRUE    6191        25    male 
+2 data_header…         5 slo          slower     TRUE    6192        21    male 
+3 data_header…        12 slo          slower     TRUE    6192        21    male 
+4 data_header…         1 fas          faster     TRUE    6191        25    male 
+5 data_header…        13 slo          slower     TRUE    6191        25    male 
 # ℹ 4 more variables: Order &lt;chr&gt;, FirstSpeed &lt;chr&gt;, Block &lt;chr&gt;, speed &lt;chr&gt;
 ```
 ]
