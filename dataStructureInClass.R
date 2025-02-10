@@ -62,7 +62,9 @@ ds %>% mutate(word_len = str_length(word),
 ds %>% mutate(word_cleaned = str_remove_all(word, "[:punct:]")) 
 ds %>% mutate(word_cleaned = str_replace_all(word, "[:punct:]"," ")) 
 ds %>% mutate(vowel_count = str_count(word, "[aeiou]")) 
-ds %>% mutate(is_three_letter = str_detect(word, "[:alnum:{3}]")) 
+#ds %>% mutate(is_three_letter = str_detect(word, "[:alnum:{3}]")) #ROTATE
+# if the goal was to detect three-letter words this code does not work
+ds %>% mutate(is_three_letter = str_detect(word, "\\b\\w{3}\\b"))
 
 fnames <- list.files(path="data_raw", full.names = T)
 str_split(fnames, "/") 
