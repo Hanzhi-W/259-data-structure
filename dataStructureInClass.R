@@ -36,7 +36,7 @@ lt <- list(lt1 = lt, lt2 = lt, lt3 = lt)
 lt$lt1
 
 model <- lm(height ~ mass, data = starwars)
-typeof(model)
+typeof(model) # lm model is actually a list too
 model$coefficients
 
 # Character data (strings)
@@ -61,18 +61,20 @@ ds %>% mutate(word_len = str_length(word),
 
 ds %>% mutate(word_cleaned = str_remove_all(word, "[:punct:]")) 
 ds %>% mutate(word_cleaned = str_replace_all(word, "[:punct:]"," ")) 
-ds %>% mutate(vowel_count = str_count(word, "[aeiou]")) 
+
+ds %>% mutate(vowel_count = str_count(word, "[aeiou]"))  # SHOULD BE THE SAME AS C('a', 'e',...)
 #ds %>% mutate(is_three_letter = str_detect(word, "[:alnum:{3}]")) #ROTATE
 # if the goal was to detect three-letter words this code does not work
 ds %>% mutate(is_three_letter = str_detect(word, "\\b\\w{3}\\b"))
 
+
 fnames <- list.files(path="data_raw", full.names = T)
 str_split(fnames, "/") 
-str_replace_all(fnames, "data_raw/|.csv|vocab","") 
-str_extract_all(fnames, "\\d{2}.\\d{1}|\\d{2}", simplify = T) 
+str_replace_all(fnames, "data_raw/|.csv|vocab","") #It's actually removing unusable parts
+str_extract_all(fnames, "\\d{2}.\\d{1}|\\d{2}", simplify = T) # d is digits; simplify = T returns a character matrix, instead of a list of vectors
 str_extract_all(fnames, "\\.[:alpha:]{1,4}", simplify = T) 
-str_extract_all(fnames, "(?<=\\/)[:alpha:]+", simplify = T) 
-str_extract_all(ds$word, boundary("word"), simplify = T) 
+str_extract_all(fnames, "(?<=\\/)[:alpha:]+", simplify = T) # WHAT IS IT DOING
+str_extract_all(ds$word, boundary("word"), simplify = T) # WHAT IS IT DOING
 
 # Combining strings
 
@@ -95,11 +97,12 @@ dates <- tibble(dates1 = c("2017-09-01", "2016-09-01", "2015-09-01", "2014-09-01
 
 dates # ROTATE
 dates %>% mutate(dates1_parsed = ymd(dates1)) 
-dates %>% mutate(dates2_parsed = mdy(dates2)) 
+dates %>% mutate(dates2_parsed = mdy(dates2)) #"mdy" is telling the code that "dates2" is in mdy format
 dates %>% mutate(dates3_parsed = parse_date(dates3, format = "%B %d, %Y")) 
 
 # Time is weird
-
+# consider Leap days and leap seconds: they mean that physical time is not the same as calendar time
+# there is difference between "durations" and "periods"
 time_length(mdy("05-27-2022")-mdy("05-27-1983"), "years")
 time_length(as.period(interval(mdy("05-27-1983"), mdy("05-27-2022"))), "years")
 time_length(as.period(interval(mdy("05-27-1983"), mdy("05-28-2022"))), "years")
@@ -124,7 +127,7 @@ tz(t1)
 t2 <- as_datetime("2022-01-27 13:39:28", tz = "America/New_York")
 t2-t1
 t3 <- as_datetime("2021-10-15 10:39:28", tz = "America/Los_Angeles")
-t3
+t3 # it can automatically distinguish PST and PDT
 as.period(interval(start = t3, end = t1), unit = "days")
 with_tz(t3, "America/New_York")
 force_tz(t3, "America/New_York")
@@ -149,7 +152,7 @@ ds <- ds %>% select(name, eye_f)
 ds 
 ds %>% mutate(eye_f2 = factor(eye_f, levels = c("blue", "brown"))) 
 ds %>% mutate(eye_f2 = factor(eye_f, levels = c("blue", "brown"), labels = c("bl","br"))) 
-ds %>% mutate(eye_f2 = fct_lump(eye_f, n = 3)) 
+ds %>% mutate(eye_f2 = fct_lump(eye_f, n = 3)) # use the groups that occur the most
 ds %>% mutate(eye_type = fct_collapse(eye_f, human = c("blue", "brown"), nonhuman = c("yellow", "red"))) 
 
 # Reordering factors levels
